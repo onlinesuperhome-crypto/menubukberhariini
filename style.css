@@ -16,4 +16,39 @@ input {
   text-decoration: none;
   border-radius: 6px;
   font-size: 15px;
+
+}/* ===== MOBILE VERSION ===== */
+@media (max-width: 480px) {
+
+  body {
+    padding: 20px;
+  }
+
+  #pinBox, #konten {
+    width: 100%;
+    padding: 25px 20px;
+    border-radius: 16px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  input, button {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  button {
+    border-radius: 10px;
+  }
 }
